@@ -9,6 +9,8 @@ def get_call_long(call):
     def call_long(*args, **kwargs):
         """Do an async call with a very long timeout (unless specified otherwise)"""
         kwargs['timeout'] = 100  # seconds
+        print(args)
+        print(kwargs)
         return call(*args, **kwargs)
 
     return call_long
