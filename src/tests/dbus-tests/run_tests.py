@@ -38,14 +38,14 @@ def setup_vdevs():
 
     # craete 4 fake SCSI hard drives
     assert subprocess.call(['modprobe', 'scsi_debug', 'dev_size_mb=%i' % (
-        VDEV_SIZE / 1048576), 'num_tgts=4']) == 0, 'Failure to modprobe scsi_debug'
+        VDEV_SIZE / 1048576), 'num_tgts=1']) == 0, 'Failure to modprobe scsi_debug'
 
     # wait until the drives got created
     dirs = []
-    while len(dirs) < 4:
+    while len(dirs) < 1:
         dirs = glob.glob('/sys/bus/pseudo/drivers/scsi_debug/adapter*/host*/target*/*:*/block')
         time.sleep(0.1)
-    assert len(dirs) == 4
+    assert len(dirs) == 1
 
     vdevs = []
     for d in dirs:

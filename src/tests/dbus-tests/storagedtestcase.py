@@ -35,7 +35,6 @@ class StoragedTestCase(unittest.TestCase):
         self.bus.call_async = get_call_long(self._orig_call_async)
         self.bus.call_blocking = get_call_long(self._orig_call_blocking)
         self.vdevs = test_devs
-        assert len(self.vdevs) > 3;
 
 
     @classmethod
